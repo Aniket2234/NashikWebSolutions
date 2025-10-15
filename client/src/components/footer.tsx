@@ -58,13 +58,12 @@ export function Footer() {
               {services.map((service) => (
                 <li key={service.label}>
                   <Link href={service.href}>
-                    <Button
-                      variant="link"
-                      className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                    <button
+                      className="h-auto p-0 text-muted-foreground hover:text-foreground text-sm transition-colors"
                       data-testid={`link-footer-${service.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {service.label}
-                    </Button>
+                    </button>
                   </Link>
                 </li>
               ))}
@@ -77,13 +76,12 @@ export function Footer() {
               {company.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href}>
-                    <Button
-                      variant="link"
-                      className="h-auto p-0 text-muted-foreground hover:text-foreground"
+                    <button
+                      className="h-auto p-0 text-muted-foreground hover:text-foreground text-sm transition-colors"
                       data-testid={`link-footer-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {item.label}
-                    </Button>
+                    </button>
                   </Link>
                 </li>
               ))}
