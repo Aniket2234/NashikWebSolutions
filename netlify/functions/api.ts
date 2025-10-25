@@ -1,14 +1,16 @@
-import express from "express";
+import express, { Router } from "express";
 import serverless from "serverless-http";
 import { storage } from "../../server/storage";
 import { insertContactInquirySchema } from "../../shared/schema";
 import PDFDocument from "pdfkit";
 
 const app = express();
+const router = Router();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.post("/api/contact", async (req, res) => {
+router.post("/contact", async (req, res) => {
   try {
     const validatedData = insertContactInquirySchema.parse(req.body);
     const inquiry = await storage.createContactInquiry(validatedData);
@@ -21,7 +23,7 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-app.get("/api/download-brochure", async (req, res) => {
+router.get("/download-brochure", async (req, res) => {
   try {
     const doc = new PDFDocument({ size: 'A4', margin: 50 });
     
@@ -207,4 +209,8 @@ app.get("/api/download-brochure", async (req, res) => {
   }
 });
 
-export const handler = serverless(app);
+app.use('/.netlify/functions/api', router);
+
+export const handler = serverless(app, {
+  binary: ['application/pdf']
+});

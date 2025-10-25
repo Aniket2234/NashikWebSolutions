@@ -12,9 +12,20 @@ This guide will help you deploy your Nashik Website Development application to N
 
 The following files have been created to make your application Netlify-ready:
 
-1. **`netlify.toml`** - Netlify configuration file
-2. **`netlify/functions/api.ts`** - Serverless function wrapping your Express API
-3. **`client/public/_redirects`** - Client-side routing configuration
+1. **`netlify.toml`** - Netlify configuration file with build settings and redirects
+2. **`netlify/functions/api.ts`** - Serverless function wrapping your Express API routes
+3. **`client/public/_redirects`** - Client-side routing configuration (backup for SPA routing)
+
+### How API Routing Works
+
+- Frontend makes requests to `/api/contact` and `/api/download-brochure`
+- Netlify redirects these to `/.netlify/functions/api/contact` and `/.netlify/functions/api/download-brochure`
+- The Express router in `netlify/functions/api.ts` is mounted at `/.netlify/functions/api` to handle these paths
+- This ensures seamless routing without code changes in your frontend
+
+### Binary Response Handling
+
+The serverless function is configured to properly handle binary responses (PDFs) using the `binary` option in `serverless-http`. This ensures that PDF downloads work correctly on Netlify without corruption.
 
 ## Required Package.json Changes
 
@@ -100,14 +111,22 @@ Before deploying, you can test the Netlify functions locally:
    npm install -g netlify-cli
    ```
 
-2. **Run Netlify Dev:**
+2. **Build the application:**
+   ```bash
+   npm run build
+   ```
+
+3. **Run Netlify Dev:**
    ```bash
    netlify dev
    ```
 
-3. **Access your site:**
+4. **Access your site:**
    - Open http://localhost:8888
-   - API routes will be available at `/api/*`
+   - Test the contact form at `/contact`
+   - Test the brochure download at `/api/download-brochure`
+
+**Note:** The API routes are automatically redirected from `/api/*` to `/.netlify/functions/api/*` via the configuration in `netlify.toml` and `_redirects`.
 
 ## Environment Variables
 
