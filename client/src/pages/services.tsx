@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { LottieAnimation } from "@/components/lottie-animation";
 import {
   Globe,
   Menu as MenuIcon,
@@ -89,10 +90,30 @@ const services = [
 ];
 
 const process = [
-  { step: "01", title: "Discovery", description: "Understanding your business needs and goals" },
-  { step: "02", title: "Design", description: "Creating wireframes and visual designs" },
-  { step: "03", title: "Development", description: "Building with modern technologies" },
-  { step: "04", title: "Deployment", description: "Launching and maintaining your solution" },
+  { 
+    step: "01", 
+    title: "Discovery", 
+    description: "Understanding your business needs and goals",
+    lottieUrl: "https://lottie.host/4e9b6c8f-3d75-4c2e-9f1a-d1e3f5g6h7i8/DiscoveryAnim.json"
+  },
+  { 
+    step: "02", 
+    title: "Design", 
+    description: "Creating wireframes and visual designs",
+    lottieUrl: "https://lottie.host/5f0c7d9g-4e86-5d3f-0g2b-e2f4g6h8i9j0/DesignAnim.json"
+  },
+  { 
+    step: "03", 
+    title: "Development", 
+    description: "Building with modern technologies",
+    lottieUrl: "https://lottie.host/6g1d8e0h-5f97-6e4g-1h3c-f3g5h7i9j0k1/DevAnim.json"
+  },
+  { 
+    step: "04", 
+    title: "Deployment", 
+    description: "Launching and maintaining your solution",
+    lottieUrl: "https://lottie.host/7h2e9f1i-6g08-7f5h-2i4d-g4h6i8j0k1l2/DeployAnim.json"
+  },
 ];
 
 const techStack = [
@@ -206,16 +227,18 @@ export default function Services() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {process.map((item, index) => (
               <AnimatedSection key={index} delay={index * 100}>
-                <div className="relative">
-                  <div className="text-6xl font-bold font-accent text-primary/20 mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                <Card className="relative h-full card-shadow border-border">
+                  <CardContent className="p-6">
+                    <div className="text-6xl font-bold font-accent text-primary/20 mb-4 text-center">
+                      {item.step}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2 text-center">{item.title}</h3>
+                    <p className="text-muted-foreground text-center text-sm">{item.description}</p>
+                  </CardContent>
                   {index < process.length - 1 && (
-                    <ArrowRight className="hidden lg:block absolute top-12 -right-8 h-6 w-6 text-muted-foreground/30" />
+                    <ArrowRight className="hidden lg:block absolute top-1/2 -right-8 h-6 w-6 text-muted-foreground/30 -translate-y-1/2" />
                   )}
-                </div>
+                </Card>
               </AnimatedSection>
             ))}
           </div>

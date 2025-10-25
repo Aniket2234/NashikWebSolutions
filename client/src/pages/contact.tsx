@@ -25,6 +25,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactInquirySchema, type InsertContactInquiry } from "@shared/schema";
+import { LottieAnimation } from "@/components/lottie-animation";
 import {
   Mail,
   Phone,

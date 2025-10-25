@@ -106,12 +106,38 @@ shared/
 ```
 
 ## Recent Changes
+- **UI/UX Enhancements (October 2025)**:
+  - Added Viraj as UI/UX Designer to the founders team
+  - Enhanced CSS with premium effects (glassmorphism, gradient borders, micro-interactions)
+  - Improved card shadows and hover effects (card-shadow, hover-lift classes)
+  - Added smooth animations (fade-in-up, slide-in-right, shimmer loading)
+  - Implemented button scale effects and focus glow states
+  - Enhanced hero section with animated gradient backgrounds
+  - Added gradient text utilities for headings
+  - Improved overall visual hierarchy and spacing
 - Implemented multi-page website with smooth animations
 - Added contact form with proper validation using react-hook-form
 - Created PDF service guide generation using PDFKit
 - Implemented dark/light theme toggle
 - Added responsive design across all pages
 - Fixed LSP errors for type safety
+
+## Deployment
+
+### Netlify Deployment
+
+The application is now configured for Netlify deployment. See [`NETLIFY_DEPLOYMENT.md`](./NETLIFY_DEPLOYMENT.md) for detailed deployment instructions.
+
+**Quick Start:**
+1. Update the build script in `package.json` (see deployment guide)
+2. Push to GitHub/GitLab
+3. Connect repository to Netlify
+4. Deploy!
+
+**Key Files:**
+- `netlify.toml` - Netlify configuration
+- `netlify/functions/api.ts` - Serverless function wrapper
+- `client/public/_redirects` - Routing configuration
 
 ## Future Enhancements
 - Blog section for SEO and content marketing
@@ -120,3 +146,4 @@ shared/
 - Live chat support widget
 - Analytics dashboard integration
 - Map integration for office location
+- Production database integration (Supabase/MongoDB Atlas)

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { LottieAnimation } from "@/components/lottie-animation";
 import {
   Code2,
   Rocket,
@@ -23,24 +24,28 @@ const services = [
     title: "Website Development",
     description: "Custom websites with full deployment support. Modern, responsive, and SEO-optimized solutions tailored to your business needs.",
     color: "text-primary",
+    lottieUrl: "https://lottie.host/38cd5774-b0b0-42f3-9d03-03f46999d4e5/YZW8i7QVJr.json",
   },
   {
     icon: MenuIcon,
     title: "Digital Menu Solutions",
     description: "Interactive digital menus for restaurants and cafes. QR code enabled, real-time updates, and beautiful presentation.",
     color: "text-chart-2",
+    lottieUrl: "https://lottie.host/6b0c3f96-b8e7-44f0-9c1d-f0e8c0f8a8e5/tqWGQqQrQW.json",
   },
   {
     icon: LineChart,
     title: "CRM Systems",
     description: "Custom CRM solutions to manage customer relationships effectively. Streamline your sales and improve customer satisfaction.",
     color: "text-chart-3",
+    lottieUrl: "https://lottie.host/cd0e3a77-1c53-4b0c-8e98-b6b3c9b3c0b3/bJYWQqQrQW.json",
   },
   {
     icon: Wrench,
     title: "Custom Software",
     description: "Bespoke software solutions designed specifically for your unique business requirements and workflows.",
     color: "text-chart-4",
+    lottieUrl: "https://lottie.host/4e8f5b88-2d64-5c1d-9f09-c7c4d0d4d1d4/cKZXRrRsRX.json",
   },
 ];
 
@@ -78,6 +83,11 @@ const founders = [
     role: "Co-Founder & Business Lead",
     bio: "Strategic thinker driving business growth and client success initiatives.",
   },
+  {
+    name: "Viraj",
+    role: "UI/UX Designer",
+    bio: "Creative designer focused on crafting beautiful and intuitive user experiences.",
+  },
 ];
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -101,8 +111,8 @@ export default function Home() {
     <div className="min-h-screen">
       <div className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-chart-2/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-chart-2/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-32 lg:pt-40 pb-20 lg:pb-32">
           <div className="text-center space-y-8 animate-fade-in-up">
@@ -171,16 +181,23 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <AnimatedSection key={index} delay={index * 100}>
-              <Card className="h-full hover-elevate transition-all duration-300 hover:scale-[1.02] border-border">
-                <CardContent className="p-8">
-                  <service.icon className={`h-12 w-12 ${service.color} mb-4`} />
-                  <h3 className="text-2xl font-semibold font-accent mb-3">
-                    {service.title}
-                  </h3>
+              <Card className="group h-full card-shadow hover:scale-[1.02] border-border relative overflow-hidden">
+                <CardContent className="p-8 relative z-10">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/10 to-chart-2/10 flex items-center justify-center flex-shrink-0">
+                      <service.icon className={`h-8 w-8 ${service.color}`} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-semibold font-accent mb-3">
+                        {service.title}
+                      </h3>
+                    </div>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
                 </CardContent>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Card>
             </AnimatedSection>
           ))}
@@ -225,11 +242,11 @@ export default function Home() {
             Our Founding Team
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Three passionate technologists building the future of web development in Nashik
+            Four passionate technologists building the future of web development in Nashik
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {founders.map((founder, index) => (
             <AnimatedSection key={index} delay={index * 150}>
               <Card className="text-center hover-elevate transition-all duration-300 hover:scale-[1.02]">
