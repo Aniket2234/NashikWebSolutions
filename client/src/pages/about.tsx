@@ -34,6 +34,12 @@ const founders = [
     bio: "Strategic thinker with strong business acumen and client relationship management skills. Drives growth through innovative solutions and customer success initiatives.",
     expertise: ["Business Strategy", "Client Relations", "Project Management"],
   },
+  {
+    name: "Viraj",
+    role: "UI/UX Designer",
+    bio: "Creative designer focused on crafting beautiful and intuitive user experiences. Specializes in modern interface design, user flows, and visual aesthetics that bring ideas to life.",
+    expertise: ["Interface Design", "User Experience", "Visual Design"],
+  },
 ];
 
 const values = [
@@ -230,11 +236,11 @@ export default function About() {
               Meet the Founders
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Three passionate technologists united by a common vision
+              Four passionate technologists united by a common vision
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {founders.map((founder, index) => (
               <AnimatedSection key={index} delay={index * 150}>
                 <Card className="h-full hover-elevate transition-all duration-300 hover:scale-[1.02]">
